@@ -112,3 +112,26 @@ try{
     }
   }
 }
+
+
+requisicao.onload = function(){
+  var noticias = requisicao.response;
+  
+  let noticia_destaque = new Noticia_Destaque();
+  let all_noticias = new Noticias();
+  
+    for(let i = 0 ; i <= noticias.articles.length ; i++){
+       
+        if( i == 2 ){
+          noticia_destaque.set_Atributos_Destaque( noticias.articles[i].urlToImage, noticias.articles[i].publishedAt , noticias.articles[i].title , noticias.articles[i].author , noticias.articles[i].description , noticias.articles[i].url );
+          noticia_destaque.mostrar_Noticia_Destaque();
+   }
+        
+        if( i >= 3 ){
+          all_noticias.set_Atributos( noticias.articles[i].title , noticias.articles[i].publishedAt , noticias.articles[i].author , noticias.articles[i].description , noticias.articles[i].url );
+          all_noticias.mostrar_Noticias();
+     }
+  }
+    
+       
+  }
